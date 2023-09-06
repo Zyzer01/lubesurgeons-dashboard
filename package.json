@@ -10,6 +10,7 @@
   },
   "author": "Zyzer01 <devzyzer@gmail.com> (https://zyzer01.github.io/Prev)",
   "dependencies": {
+    "@headlessui/react": "^1.7.17",
     "@supabase/supabase-js": "^2.33.0",
     "@windmill/react-ui": "^0.6.0",
     "angular": "^1.6.10",
