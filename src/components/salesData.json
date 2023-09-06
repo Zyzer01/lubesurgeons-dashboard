@@ -1,0 +1,11 @@
+[
+    { "service": "Engine Oil Change", "date": "2023-08-01", "sales": 50 },
+    { "service": "Car Wash", "date": "2023-08-01", "sales": 30 },
+    { "service": "Engine Oil Change", "date": "2023-08-02", "sales": 40 },
+    { "service": "Car Wash", "date": "2023-08-01", "sales": 70 },
+    { "service": "Engine Oil Change", "date": "2023-08-03", "sales": 90 },
+    { "service": "Car Wash", "date": "2023-08-01", "sales": 60 },
+    { "service": "Engine Oil Change", "date": "2023-08-04", "sales": 70 },
+    { "service": "Car Wash", "date": "2023-08-01", "sales": 30 }
+]
+  

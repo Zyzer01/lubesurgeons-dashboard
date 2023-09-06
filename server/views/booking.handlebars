@@ -1,0 +1,62 @@
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <meta http-equiv='X-UA-Compatible' content='ie=edge' />
+    <title>Document</title>
+    <style>
+      body { background-color: #0a0a0a; color: #fff; /* White text color */
+      font-family: Arial, sans-serif; margin: 0; padding: 0; } .booking {
+      overflow: auto; width: 100%; } .booking table { border: 1px solid #DEDEDF;
+      height: 100%; width: 100%; table-layout: auto; border-collapse: collapse;
+      border-spacing: 1px; text-align: left; } .booking caption { caption-side:
+      top; text-align: left; font-weight: bold; margin-bottom: 5px; margin-top:
+      5px; } .booking th { border: 1px solid #DEDEDF; background-color: #031B2B;
+      color: #FFFFFF; padding: 10px; } .booking td { border: 1px solid #DEDEDF;
+      background-color: #FFFFFF; color: #000000; padding: 10px; } .footer {
+      text-align: center; font-size: small; padding-top: 15px; padding-bottom:
+      5px;} .footer a {color: #FF9F15;} img { max-width: 1000%; width: 100; height: auto;
+      display: block; margin: 0 auto; }
+
+    </style>
+  </head>
+  <body>
+    {{!-- <img src={{imageUrl}} alt='Lubesurgeons logo' /> --}}
+    <p>Hi, {{name}} </p>
+    <p>Thank you for booking an Appointment on Lubesurgeons</p>
+    <div class='booking' role='region' tabindex='0'>
+      <table>
+        <caption>Your Appointment Details:</caption>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Service:</td>
+            <td>{{service}}</td>
+          </tr>
+          <tr>
+            <td>Location:</td>
+            <td>{{lga}}, {{state}}</td>
+          </tr>
+          <tr>
+            <td>Date:</td>
+            <td>{{date}}</td>
+          </tr>
+          <tr>
+            <td>Vehicle:</td>
+            <td>{{carBrand}} {{carModel}}, ({{carYear}})</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <footer class='footer'>
+      <p>Copyright &copy; Lubesurgeons 2023. All rights reserved.</p>
+      <p><a href='https://lubesurgeons.com'>Visit us</a></p>
+    </footer>
+
+  </body>
+</html>
