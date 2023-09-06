@@ -271,7 +271,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
             <ul className="mb-6 flex flex-col gap-1.5">
               {/* <!-- Menu Item Logout --> */}
               <li>
-                <LogoutButton />
+                <LogoutButton link="/auth/signin"/>
               </li>
               {/* <!-- Menu Item Logout --> */}
             </ul>

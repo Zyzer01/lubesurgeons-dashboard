@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import LogoDark from '../../images/logo/lubsurgeons logo.png';
 import Logo from '../../images/logo/lubsurgeons logo.png';
-import { supabase } from '../../config/supabaseClient';
+import { supabase } from '../../config/supabaseAdminClient';
 
 const ERROR_MESSAGE = {
   email: 'Email address is required',
@@ -107,7 +107,7 @@ const AdminSignIn: React.FC = () => {
       try {
         setIsLoading(true);
 
-        const { data, error } = await supabase.auth.signInWithPassword({
+        const { data, error } = await supabase.auth.admin.signInWithPassword({
           email: loginFormData.email,
           password: loginFormData.password,
         });
@@ -128,6 +128,7 @@ const AdminSignIn: React.FC = () => {
       }
     }
   };
+
 
   return (
     <>

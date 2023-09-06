@@ -62,6 +62,7 @@ const BookingRow: React.FC<BookingRowProps> = ({
     }
   };
 
+
   useEffect(() => {
     async function getProfile() {
       const {

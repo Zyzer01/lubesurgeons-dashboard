@@ -1,8 +1,12 @@
-import React from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { supabase } from '../config/supabaseClient';
 
-const LogoutButton: React.FC = () => {
+interface LogoutButtonProps {
+  link: string;
+}
+
+
+const LogoutButton: React.FC = ({ link }) => {
   const location = useLocation();
   const { pathname } = location;
   const handleLogout = async () => {
@@ -22,7 +26,7 @@ const LogoutButton: React.FC = () => {
   return (
     <NavLink
       onClick={handleLogout}
-      to="auth/signin"
+      to={link}
       className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
         pathname.includes('logout') && 'bg-graydark dark:bg-meta-4'
       }`}

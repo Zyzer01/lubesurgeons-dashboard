@@ -238,7 +238,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarAdminProps) => {
               {/* <!-- Menu Item Logout --> */}
               <li>
                 {/* <NavLink to={'/admin/signin'}> */}
-                <LogoutButton />
+                <LogoutButton link="/admin/auth/signin"/>
                 {/* </NavLink> */}
               </li>
               {/* <!-- Menu Item Logout --> */}
