@@ -13,41 +13,18 @@ import AdminOrders from './pages/AdminOrders';
 import AdminSales from './pages/AdminSales';
 import Book from './pages/Book';
 import { ResetPassword } from './pages/Authentication/ResetPassword';
-import { supabase } from './config/supabaseClient';
 
-// Assuming you have a function to check the user's authentication status
-const isAuthenticated = async (): Promise<boolean> => {
-  const { data: user, error } = await supabase.auth.getUser();
-
-  if (error) {
-    console.error('Error checking authentication:', error);
-    return false;
-  }
-
-  return !!user; // Return true if user exists (authenticated), false otherwise
-};
 
 const DefaultLayout = lazy(() => import('./layout/DefaultLayout'));
 const AdminLayout = lazy(() => import('./layout/AdminLayout'));
 
+
 function App() {
   const [loading, setLoading] = useState<boolean>(true);
-  const navigate = useNavigate();
-
+  
   useEffect(() => {
-    // Check authentication status when the component mounts
-    isAuthenticated()
-      .then((result) => {
-        if (!result) {
-          navigate('/auth/signin'); // Redirect to login page if not authenticated
-        }
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error('Error checking authentication:', error);
-        setLoading(false);
-      });
-  }, [navigate]);
+    setTimeout(() => setLoading(false), 1000);
+  }, []);
 
   return loading ? (
     <Loader />
