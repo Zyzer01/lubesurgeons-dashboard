@@ -60,16 +60,14 @@ const ResetModal: FC<ResetModalProps> = ({ isOpen, onClose }) => {
         const { data, error } = await supabase.auth.resetPasswordForEmail(
           resetEmail.email, // Use the entered email
           {
-            redirectTo: 'http://example.com/account/update-password',
-          },
+            redirectTo: 'https://lubesurgeons-dashboard.vercel.app/reset',
+          }
         );
 
         if (error) {
           console.error('Password reset error:', error.message);
         } else {
-          setSuccessMessage(
-            'Password reset sent. Check your inbox or spam folder',
-          );
+          setSuccessMessage('Password reset sent. Check your inbox or spam folder');
         }
       } catch (error) {
         console.error('Password reset error:', (error as Error).message);
@@ -87,13 +85,11 @@ const ResetModal: FC<ResetModalProps> = ({ isOpen, onClose }) => {
       enterTo="opacity-100"
       leave="transition-opacity duration-300"
       leaveFrom="opacity-100"
-      leaveTo="opacity-0"
-    >
+      leaveTo="opacity-0">
       <div
         className={`fixed inset-0 flex items-center justify-center z-12  ${
           isOpen ? 'visible' : 'hidden'
-        }`}
-      >
+        }`}>
         <div className="fixed inset-0 bg-gray-900 bg-opacity-50 backdrop-blur-sm z-10"></div>
         <div className="bg-white rounded-lg z-10">
           <div className="flex justify-end">
@@ -102,14 +98,12 @@ const ResetModal: FC<ResetModalProps> = ({ isOpen, onClose }) => {
                 <button
                   type="button"
                   className="p-2 text-gray-400 rounded-md hover:bg-gray-100"
-                  onClick={onClose}
-                >
+                  onClick={onClose}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="w-5 h-5 mx-auto"
                     viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
+                    fill="currentColor">
                     <path
                       fillRule="evenodd"
                       d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
@@ -119,12 +113,10 @@ const ResetModal: FC<ResetModalProps> = ({ isOpen, onClose }) => {
                 </button>
               </div>
               <div className="max-w-sm mx-auto pt-3 pb-4 px-2 space-y-3 text-center">
-                <h3 className="text-xl font-medium text-black">
-                  Reset Password
-                </h3>
+                <h3 className="text-xl font-medium text-black">Reset Password</h3>
                 <p className="text-[15px] text-gray-600">
-                  Enter the email address associated with your account and
-                  we&apos;ll send you a link to reset your password.
+                  Enter the email address associated with your account and we&apos;ll send you a
+                  link to reset your password.
                 </p>
                 <div className="relative">
                   <svg
@@ -133,8 +125,7 @@ const ResetModal: FC<ResetModalProps> = ({ isOpen, onClose }) => {
                     fill="none"
                     viewBox="0 0 24 24"
                     strokeWidth={1.5}
-                    stroke="currentColor"
-                  >
+                    stroke="currentColor">
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
@@ -152,17 +143,12 @@ const ResetModal: FC<ResetModalProps> = ({ isOpen, onClose }) => {
                 <button
                   onClick={handleSubmit}
                   type="submit"
-                  className="block w-full mt-4 py-3 px-4 font-medium text-sm text-center text-white bg-bulaba hover:bg-slate-900 active:bg-bulaba rounded-lg ring-offset-2 ring-bulaba focus:ring-2"
-                >
+                  className="block w-full mt-4 py-3 px-4 font-medium text-sm text-center text-white bg-bulaba hover:bg-slate-900 active:bg-bulaba rounded-lg ring-offset-2 ring-bulaba focus:ring-2">
                   {isLoading ? 'Loading...' : 'Reset Password'}
                 </button>
-                {formError && (
-                  <p className="text-danger mt-4 text-center">{formError}</p>
-                )}
+                {formError && <p className="text-danger mt-4 text-center">{formError}</p>}
                 {successMessage && (
-                  <p className="text-success mt-4 text-center">
-                    {successMessage}
-                  </p>
+                  <p className="text-success mt-4 text-center">{successMessage}</p>
                 )}
               </div>
             </div>
