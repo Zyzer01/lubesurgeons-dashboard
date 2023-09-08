@@ -11,9 +11,7 @@ const Dashboard = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [popupMessage, setPopupMessage] = useState('');
-  const [vehicles, setVehicles] = useState<
-    { id: number; carBrand: string; vin: string }[]
-  >([]);
+  const [vehicles, setVehicles] = useState<{ id: number; carBrand: string; vin: string }[]>([]);
 
   const openPopup = (message) => {
     setPopupMessage(message);
@@ -32,10 +30,7 @@ const Dashboard = () => {
         const {
           data: { user },
         } = await supabase.auth.getUser();
-        const { data, error } = await supabase
-          .from('vehicles')
-          .select('*')
-          .eq('userId', user.id);
+        const { data, error } = await supabase.from('vehicles').select('*').eq('userId', user.id);
         if (error) {
           console.error('Error fetching data:', error.message);
         } else {

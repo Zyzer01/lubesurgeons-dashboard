@@ -72,9 +72,7 @@ const AdminDashboard = () => {
 
   return (
     <>
-      <h3 className="text-xl text-start font-medium mb-4 text-black dark:text-white">
-        Overview
-      </h3>
+      <h3 className="text-xl text-start font-medium mb-4 text-black dark:text-white">Overview</h3>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-6 xl:grid-cols-3 2xl:gap-7.5">
         <UserCard
           icon={<OrderIcon />}

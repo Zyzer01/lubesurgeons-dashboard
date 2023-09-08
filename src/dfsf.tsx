@@ -53,11 +53,7 @@ function App() {
     <Loader />
   ) : (
     <>
-      <Toaster
-        position="top-right"
-        reverseOrder={false}
-        containerClassName="overflow-auto"
-      />
+      <Toaster position="top-right" reverseOrder={false} containerClassName="overflow-auto" />
 
       <Routes>
         <Route path="/book" element={<Book />} />

@@ -23,7 +23,7 @@ const UsersTable = () => {
 
         if (!error) {
           const filteredUsers = users.filter(
-            (user) => user.id !== '84eab987-a653-4247-b62a-9dab2d316e11',
+            (user) => user.id !== 'b9522e4b-2a7a-4e7f-ad5c-068fb7b13165'
           );
           setLubesurgeonUsers(filteredUsers);
         } else {
@@ -44,9 +44,7 @@ const UsersTable = () => {
       const { data, error } = await supabase.auth.admin.deleteUser(userId);
       if (!error) {
         console.log('User deleted successfully');
-        setLubesurgeonUsers(
-          lubesurgeonUsers.filter((user) => user.id !== userId),
-        );
+        setLubesurgeonUsers(lubesurgeonUsers.filter((user) => user.id !== userId));
       } else {
         console.error('Error deleting user:', error);
       }
@@ -76,30 +74,20 @@ const UsersTable = () => {
         buttonColor="bg-danger"
       />
       <div className="rounded-sm border border-stroke bg-white px-5 pt-6 pb-2.5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1">
-        <h4 className="mb-6 text-xl font-semibold text-black dark:text-white">
-          Active Users
-        </h4>
+        <h4 className="mb-6 text-xl font-semibold text-black dark:text-white">Active Users</h4>
         <div className="flex flex-col">
           <div className="grid grid-cols-3 rounded-sm bg-gray-2 dark:bg-meta-4 sm:grid-cols-4">
             <div className="p-2.5 xl:p-5">
-              <h5 className="text-sm font-medium uppercase xsm:text-base">
-                Name
-              </h5>
+              <h5 className="text-sm font-medium uppercase xsm:text-base">Name</h5>
             </div>
             <div className="p-2.5 text-center xl:p-5">
-              <h5 className="text-sm font-medium uppercase xsm:text-base">
-                Email
-              </h5>
+              <h5 className="text-sm font-medium uppercase xsm:text-base">Email</h5>
             </div>
             <div className="p-2.5 text-center xl:p-5">
-              <h5 className="text-sm font-medium uppercase xsm:text-base">
-                Phone Number
-              </h5>
+              <h5 className="text-sm font-medium uppercase xsm:text-base">Phone Number</h5>
             </div>
             <div className="hidden p-2.5 text-center sm:block xl:p-5">
-              <h5 className="text-sm font-medium uppercase xsm:text-base">
-                Action
-              </h5>
+              <h5 className="text-sm font-medium uppercase xsm:text-base">Action</h5>
             </div>
           </div>
 
@@ -109,8 +97,7 @@ const UsersTable = () => {
             lubesurgeonUsers.map((user) => (
               <div
                 className="grid grid-cols-3 border-b border-stroke dark:border-strokedark sm:grid-cols-4"
-                key={user.id}
-              >
+                key={user.id}>
                 <div className="flex items-center gap-3 p-2.5 xl:p-5">
                   <div className="flex-shrink-0">
                     <img className="w-8 h-8" src={userx} alt="Brand" />
@@ -132,8 +119,7 @@ const UsersTable = () => {
                     onClick={() => {
                       setDeleteUserId(user.id);
                       setCancelModalOpen(true);
-                    }}
-                  >
+                    }}>
                     Delete
                   </button>
                 </div>
