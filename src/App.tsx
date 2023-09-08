@@ -114,7 +114,7 @@ function App() {
             path="sales"
             element={
               <ProtectedRoute isAllowed={user} redirectPath="/admin/auth/signin">
-                <AdminSales />{' '}
+                <AdminSales />
               </ProtectedRoute>
             }
           />
