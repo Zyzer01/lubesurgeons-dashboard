@@ -22,23 +22,36 @@ const AdminLayout = lazy(() => import('./layout/AdminLayout'));
 function App() {
   const [loading, setLoading] = useState<boolean>(true);
   const [user, setUser] = useState<boolean | null>(null);
+  const [isAdmin, setIsAdmin] = useState<boolean | null>(null);
+
+  const adminUserIds = ['b9522e4b-2a7a-4e7f-ad5c-068fb7b13165'];
 
   useEffect(() => {
     const isAuthenticated = async () => {
       try {
-        const {
-          data: { user },
-        } = await supabase.auth.getUser();
-        if (user) {
+        const { data: userData, error } = await supabase.auth.getUser();
+        if (error) {
+          throw error;
+        }
+
+        const { user } = userData;
+
+        if (user && adminUserIds.includes(user.id)) {
           setUser(true);
+          setIsAdmin(true);
+        } else if (user) {
+          setUser(true);
+          setIsAdmin(false);
         } else {
           setUser(false);
+          setIsAdmin(false);
         }
       } catch (error) {
         console.error('Error checking authentication:', error);
-        setUser(false); // Set user to false in case of an error
+        setUser(false);
+        setIsAdmin(false);
       } finally {
-        setLoading(false); // Always set loading to false, whether success or error
+        setLoading(false);
       }
     };
 
@@ -89,7 +102,7 @@ function App() {
           <Route
             index
             element={
-              <ProtectedRoute isAllowed={user} redirectPath="/admin/auth/signin">
+              <ProtectedRoute isAllowed={isAdmin} redirectPath="/admin/auth/signin">
                 <AdminDashboard />
               </ProtectedRoute>
             }
@@ -97,7 +110,7 @@ function App() {
           <Route
             path="orders"
             element={
-              <ProtectedRoute isAllowed={user} redirectPath="/admin/auth/signin">
+              <ProtectedRoute isAllowed={isAdmin} redirectPath="/admin/auth/signin">
                 <AdminOrders />
               </ProtectedRoute>
             }
@@ -105,7 +118,7 @@ function App() {
           <Route
             path="users"
             element={
-              <ProtectedRoute isAllowed={user} redirectPath="/admin/auth/signin">
+              <ProtectedRoute isAllowed={isAdmin} redirectPath="/admin/auth/signin">
                 <AdminUsers />
               </ProtectedRoute>
             }
@@ -113,7 +126,7 @@ function App() {
           <Route
             path="sales"
             element={
-              <ProtectedRoute isAllowed={user} redirectPath="/admin/auth/signin">
+              <ProtectedRoute isAllowed={isAdmin} redirectPath="/admin/auth/signin">
                 <AdminSales />
               </ProtectedRoute>
             }

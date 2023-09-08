@@ -127,8 +127,12 @@ const SignIn: React.FC = () => {
           setAuthMessage('Email or password does not match records.');
         } else if (data?.user) {
           console.log('Logged in user:', data.user.id);
-          navigate('/');
-          // Redirect or update state after successful login
+          if (data?.user) {
+            console.log('Logged in user:', data.user.id);
+            navigate('/');
+            console.log('Navigated to dashboard');
+            // Redirect or update state after successful login
+          }
         }
       } catch (error) {
         console.error('Login error:', (error as Error).message);
