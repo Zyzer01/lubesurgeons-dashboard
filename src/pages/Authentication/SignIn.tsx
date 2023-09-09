@@ -163,8 +163,7 @@ const SignIn: React.FC = () => {
         } else {
           console.warn('User name not available');
         }
-
-        // Handle successful sign-in here
+        login(data.user);
         navigate('/');
         console.log('Successfully signed in with Google:', user);
       }

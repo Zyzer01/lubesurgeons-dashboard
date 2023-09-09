@@ -143,15 +143,14 @@ const SignUp: React.FC = () => {
           console.error('Login error:', error.message);
           setAuthMessage('An error occured');
         } else if (data?.user) {
-          login(user);
-          updateUser(user);
+          login(data.user);
+          updateUser(data.user);
           console.log('Logged in user:', data.user.id);
           navigate('/');
-          // Redirect or update state after successful login
         }
       } catch (error) {
         console.error('Login error:', (error as Error).message);
-        setAuthMessage('An error occurred while signing up');
+        setAuthMessage('An error occurred while signing up' || (error as Error).message);
       } finally {
         setIsLoading(false);
       }

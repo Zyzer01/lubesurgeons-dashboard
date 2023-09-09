@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import LogoDark from '../../images/logo/lubsurgeons logo.png';
 import Logo from '../../images/logo/lubsurgeons logo.png';
 import { supabase } from '../../config/supabaseAdminClient';
+import { useAuth } from '../../context/AuthContext';
 
 const ERROR_MESSAGE = {
   email: 'Email address is required',
@@ -23,6 +24,8 @@ interface ErrorMessages {
 }
 
 const AdminSignIn: React.FC = () => {
+  const { login } = useAuth();
+
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
@@ -116,6 +119,7 @@ const AdminSignIn: React.FC = () => {
           console.error('Login error:', error.message);
           setAuthMessage('Email or password does not match records.');
         } else if (data?.user) {
+          login(data.user);
           console.log('Logged in user:', data.user.id);
           navigate('/admin');
         }
