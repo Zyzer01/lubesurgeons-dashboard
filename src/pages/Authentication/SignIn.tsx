@@ -4,6 +4,7 @@ import LogoDark from '../../images/logo/lubsurgeons logo.png';
 import Logo from '../../images/logo/lubsurgeons logo.png';
 import { supabase } from '../../config/supabaseClient';
 import ResetModal from '../../components/ResetModal';
+import { useAuth } from '../../context/AuthContext';
 
 const ERROR_MESSAGE = {
   email: 'Email address is required',
@@ -24,6 +25,7 @@ interface ErrorMessages {
 }
 
 const SignIn: React.FC = () => {
+  const { login } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
@@ -126,13 +128,9 @@ const SignIn: React.FC = () => {
           console.error('Login error:', error.message);
           setAuthMessage('Email or password does not match records.');
         } else if (data?.user) {
+          login(data.user);
           console.log('Logged in user:', data.user.id);
-          if (data?.user) {
-            console.log('Logged in user:', data.user.id);
-            navigate('/');
-            console.log('Navigated to dashboard');
-            // Redirect or update state after successful login
-          }
+          navigate('/');
         }
       } catch (error) {
         console.error('Login error:', (error as Error).message);
@@ -167,6 +165,7 @@ const SignIn: React.FC = () => {
         }
 
         // Handle successful sign-in here
+        navigate('/');
         console.log('Successfully signed in with Google:', user);
       }
     } catch (error) {

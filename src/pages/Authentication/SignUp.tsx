@@ -3,6 +3,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import LogoDark from '../../images/logo/lubsurgeons logo.png';
 import Logo from '../../images/logo/lubsurgeons logo.png';
 import { supabase } from '../../config/supabaseClient';
+import { useAuth } from '../../context/AuthContext'; // Import useAuth
+import { useUser } from '../../hooks/useUser';
 
 const ERROR_MESSAGE = {
   name: 'Name is required',
@@ -29,6 +31,9 @@ interface ErrorMessages {
 }
 
 const SignUp: React.FC = () => {
+  const { login } = useAuth(); // Use the useAuth hook
+  const { updateUser } = useUser();
+
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
@@ -138,6 +143,8 @@ const SignUp: React.FC = () => {
           console.error('Login error:', error.message);
           setAuthMessage('An error occured');
         } else if (data?.user) {
+          login(user);
+          updateUser(user);
           console.log('Logged in user:', data.user.id);
           navigate('/');
           // Redirect or update state after successful login
