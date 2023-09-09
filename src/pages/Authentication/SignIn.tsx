@@ -136,6 +136,7 @@ const SignIn: React.FC = () => {
           login(data.user);
           console.log('Logged in user:', data.user.id);
           navigate('/');
+          window.location.reload();
         }
       } catch (error) {
         console.error('Login error:', (error as Error).message);
