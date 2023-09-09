@@ -125,8 +125,13 @@ const SignIn: React.FC = () => {
         });
 
         if (error) {
-          console.error('Login error:', error.message);
-          setAuthMessage('Email or password does not match records.');
+          if (error.code === 'NETWORK_ERROR') {
+            console.error('Network error:', error.message);
+            setAuthMessage('A network error occurred. Please check your internet connection.');
+          } else {
+            console.error('Login error:', error.message);
+            setAuthMessage('Email or password does not match records.');
+          }
         } else if (data?.user) {
           login(data.user);
           console.log('Logged in user:', data.user.id);

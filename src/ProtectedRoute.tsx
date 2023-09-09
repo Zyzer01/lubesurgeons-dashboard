@@ -1,9 +1,19 @@
-import { Navigate } from 'react-router-dom';
+import { Navigate, Outlet } from 'react-router-dom';
 
-export const ProtectedRoute = ({ redirectPath = '/auth/signin', isAllowed, children }) => {
+interface ProtectedRouteProps {
+  redirectPath?: string;
+  isAllowed: boolean;
+  children?: React.ReactNode;
+}
+
+export const ProtectedRoute = ({
+  redirectPath = '/auth/signin',
+  isAllowed,
+  children,
+}: ProtectedRouteProps) => {
   if (!isAllowed) {
     return <Navigate to={redirectPath} replace />;
   }
 
-  return children;
+  return children ? children : <Outlet />;
 };
