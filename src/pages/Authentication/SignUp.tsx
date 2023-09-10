@@ -47,6 +47,15 @@ const SignUp: React.FC = () => {
     password: '',
   });
 
+  const clearFormData = () => {
+    setSignFormData({
+      name: '',
+      email: '',
+      tel: '',
+      password: '',
+    });
+  };
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     const newValue = name === 'tel' ? Number(value) : value;
@@ -152,6 +161,7 @@ const SignUp: React.FC = () => {
           setAuthMessage('An error occured');
         } else if (data?.user) {
           console.log('Logged in user:', data.user.id);
+          clearFormData();
           setSuccessMessage(
             'Sign up successful! Check your email inbox or spam folder to confirm your sign up'
           );
@@ -314,7 +324,7 @@ const SignUp: React.FC = () => {
                         errors.tel ? 'border-danger' : 'border-gray-300'
                       } w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary`}
                       name="tel"
-                      type="tel"
+                      type="text"
                       placeholder="Enter Phone number"
                       value={signFormData.tel}
                       onBlur={() => handleBlur('tel')}
