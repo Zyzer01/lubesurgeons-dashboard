@@ -34,7 +34,9 @@ function App() {
       <Toaster position="top-right" reverseOrder={false} containerClassName="overflow-auto" />
       <AuthProvider>
         <Routes>
-          <Route path="/book" element={<Book />} />
+          <ProtectedRoute isAllowed={user}>
+            <Route path="/book" element={<Book />} />
+          </ProtectedRoute>
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/auth/signin" element={<SignIn />} />
           <Route path="/auth/signup" element={<SignUp />} />
