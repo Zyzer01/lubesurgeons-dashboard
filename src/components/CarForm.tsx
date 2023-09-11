@@ -187,7 +187,7 @@ function CarForm() {
       setIsLoading(true);
       try {
         axios
-          .post('https://dashboard.lubesurgeons.com/send-booking', bookingFormData)
+          .post('https://www.dashboard.lubesurgeons.com/send-booking', bookingFormData)
           .then((response) => {
             console.log(response.data.message);
           })
