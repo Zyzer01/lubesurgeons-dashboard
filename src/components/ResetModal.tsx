@@ -60,7 +60,7 @@ const ResetModal: FC<ResetModalProps> = ({ isOpen, onClose }) => {
         const { data, error } = await supabase.auth.resetPasswordForEmail(
           resetEmail.email, // Use the entered email
           {
-            redirectTo: 'https://dashboard.lubesurgeons.com/reset',
+            redirectTo: 'https://dashboard.lubesurgeons.com/reset-password',
           }
         );
 
