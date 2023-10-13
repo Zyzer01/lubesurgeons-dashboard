@@ -1,3 +1,3 @@
 ## Lubesurgeons Dashboard
-Vehicle Maintenance booking apps
+Vehicle Maintenance booking app
 
