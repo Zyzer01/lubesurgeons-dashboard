@@ -18,7 +18,7 @@ app.use(bodyParser.json());
 // app.set('view engine', 'handlebars');
 
 const corsOptions = {
-  origin: ['http://localhost:5173'],
+  origin: ['http://localhost:3001'],
   methods: ['GET', 'POST'], 
 };
 
