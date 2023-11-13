@@ -19,7 +19,7 @@ app.use(bodyParser.json());
 
 const corsOptions = {
   origin: ['http://localhost:5173'],
-  methods: ['GET', 'POOST'],
+  methods: ['GET', 'POST'],
 };
 
 app.use(cors(corsOptions));
