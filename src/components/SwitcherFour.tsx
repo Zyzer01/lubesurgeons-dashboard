@@ -5,7 +5,7 @@ const SwitcherFour = () => {
 
   return (
     <div>
-      <labeliiiiii
+      <labeliiiii
         htmlFor="toggle4"
         className="flex cursor-pointer select-none items-center"
       >
