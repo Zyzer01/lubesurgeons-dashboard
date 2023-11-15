@@ -10,7 +10,7 @@ const SwitcherFour = () => {
         className="flex cursor-pointer select-none items-center"
       >
         <div className="relative">
-          <input
+          <inpu
             type="checkbox"
             id="toggle4"
             className="sr-only"
