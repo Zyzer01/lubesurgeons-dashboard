@@ -41,7 +41,7 @@ function App() {
           <Route
             path="/book"
             element={
-              <ProtectedRoute isAllowed={user}>
+              <ProtectedRoute isAllowed={user}> 
                 <Book />
               </ProtectedRoute>
             }
